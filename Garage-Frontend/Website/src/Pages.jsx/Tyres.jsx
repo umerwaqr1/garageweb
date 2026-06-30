@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 const Tyres = () => {
   return (
@@ -47,8 +47,8 @@ const Tyres = () => {
             <div className='absolute top-0 left-1/4 w-72 h-72 blur-[120px] bg-teal-500/10 rounded-full pointer-events-none'></div>
             
             {/* Left Side: Tyre Image Showcase */}
-            <div className='relative flex flex-col justify-center items-center h-80 md:h-[450px]'>
-              <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }} className='relative flex justify-center items-center'>
+            <div className='relative flex flex-col justify-center items-center h-80 md:h-112.5'>
+              <Motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }} className='relative flex justify-center items-center'>
                 
                 {/* Outer Pulse Rings */}
                 <div className="absolute w-72 h-72 md:w-96 md:h-96 border-2 border-teal-500/20 rounded-full animate-pulse z-0"></div>
@@ -61,7 +61,7 @@ const Tyres = () => {
                     className='rounded-full animate-spin-slow w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 cursor-pointer'
                   />
                 </div>
-              </motion.div>
+              </Motion.div>
 
               {/* Status Badge floating at the bottom of the image */}
               <div className="absolute top-106 bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full text-xs font-mono text-teal-400 z-20 shadow-md">

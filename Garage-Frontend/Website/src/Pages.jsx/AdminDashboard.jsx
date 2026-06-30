@@ -13,13 +13,12 @@ function AdminDashboard() {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    // 🛡️ SECURITY CHECK: Agar token nahi hai toh direct login page par phenk do
+    // 🛡️ SECURITY CHECK
     if (!token) {
       navigate('/admin/login');
-      return; // Aage ka code execute na ho
+      return;
     }
 
-    // 📥 Function ko useEffect ke andar move kar diya taake dependency panga na kare
     const fetchIntakes = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/intake', {
@@ -37,7 +36,7 @@ function AdminDashboard() {
     };
 
     fetchIntakes();
-  }, [token, navigate]); // ✅ Ab compiler bilkul khush hai aur koi error nahi dega!
+  }, [token, navigate]);
 
   const handleStatusUpdate = async (id, newStatus) => {
     try {
@@ -94,15 +93,18 @@ function AdminDashboard() {
             </button>
           </div>
         </div>
+
         {/* Header */}
         <div className='mb-16'>
           <span className='font-mono text-sm tracking-[0.4em] mb-3 block uppercase text-teal-600'> Management Console</span>
           <h3 className='text-4xl md:text-6xl leading-none tracking-tighter italic font-black uppercase'> PIT CREW <br /> <span className='text-teal-500'>INTAKE LOGS</span></h3>
         </div>
+
         {error && <div className='text-red-600 font-mono text-sm mb-6'>&gt; {error}</div>}
+
         {/* Card Grid */}
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-          {intakes.map((item) => (
+          {intakes && intakes.map((item) => (
             <Motion.div key={item._id} layout className='border border-white/10 p-6 rounded-3xl bg-slate-900/30 flex flex-col justify-between relative overflow-hidden group'>
               <div>
                 {/* Upper row */}
@@ -115,12 +117,14 @@ function AdminDashboard() {
                     {item.status}
                   </span>
                 </div>
+
                 {/* Vehicle Info */}
                 <div className='space-y-2 text-sm text-gray-400 mb-4'>
                   <p><strong className='text-gray-500 font-mono text-xs uppercase'>Model:</strong> {item.carModel}</p>
                   <p><strong className='text-gray-500 font-mono text-xs uppercase'>Bay:</strong> {item.serviceBay}</p>
                   <p className='text-xs truncate'><strong className='text-gray-500 font-mono text-xs uppercase'>Comms:</strong> {item.email}</p>
                 </div>
+
                 {/* Symptoms Block */}
                 <div className='bg-[#090D16]/90 p-4 rounded-xl border border-white/6 mb-6 min-h-20'>
                   <span className='text-[9px] font-mono block text-gray-500 mb-1 uppercase tracking-widest'>
@@ -129,6 +133,7 @@ function AdminDashboard() {
                   <p className='text-xs text-slate-300 leading-relaxed italic'>"{item.symptoms || 'No symptoms specified'}"</p>
                 </div>
               </div>
+
               {/* Action buttons inside */}
               <div className='grid grid-cols-2 gap-2 pt-4 border-t border-white/5 relative z-10'>
                 <button 
@@ -149,7 +154,8 @@ function AdminDashboard() {
             </Motion.div>
           ))}
         </div>
-        {intakes.length === 0 && (
+
+        {(!intakes || intakes.length === 0) && (
           <div className='text-center py-20 border border-dashed border-white/10 rounded-3xl text-gray-500 font-mono text-sm'>
             &gt; NO_ACTIVE_VEHICLES_IN_THE_INTAKE_QUEUE
           </div>

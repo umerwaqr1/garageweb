@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 const About = () => {
   return (
@@ -43,10 +43,10 @@ const About = () => {
 {label:'Service Bays', value:'15'},
 {label:'Happy Clients', value:'100%'},
   ].map((stat,index)=>(
-    <motion.div key={index} initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} transition={{delay:index*0.1}}>
+    <Motion.div key={index} initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} transition={{delay:index*0.1}}>
 <h2 className='font-black text-white text-4xl'>{stat.value}</h2>
 <p className='text-teal-400 text-sm tracking-widest uppercase font-medium mt-2'>{stat.label}</p>
-    </motion.div>
+    </Motion.div>
   ))}
 
 </div>

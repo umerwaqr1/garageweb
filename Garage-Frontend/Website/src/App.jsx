@@ -11,6 +11,7 @@ import Contact from './Pages.jsx/Contact';
 import Details from './Pages.jsx/Details';
 import Tyres from './Pages.jsx/Tyres';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AdminLogin from './Pages.jsx/AdminLogin';
 import AdminDashboard from './Pages.jsx/AdminDashboard';
 function App() {
  
@@ -26,7 +27,8 @@ function App() {
 <Route path="/details" element={<Details/>}/>
 <Route path="/tyres"  element={<Tyres/>}/>
 <Route path="/contact" element={<Contact/>}/>
-<Route path="/admin" element={<AdminDashboard/>}/>
+<Route path="/admin/login" element={<AdminLogin/>}/>
+<Route path="/admin/dashboard" element={<AdminDashboard/>}/>
      </Routes>
       <Footer />
     </Router>
