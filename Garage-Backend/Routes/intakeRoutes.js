@@ -1,9 +1,12 @@
 const express=require('express');
 const router=express.Router();
-const { createIntake,getIntakes, updateIntakeStatus }=require('../Controller/intakeControllers');
+const { createIntake,getIntakes, updateIntakeStatus , deleteIntake }=require('../Controller/intakeControllers');
+
+const {protect} = require('../Middleware/authMiddleware');
 
 router.post('/', createIntake);
 router.get('/', getIntakes);
 
 router.put('/:id', updateIntakeStatus);
+router.delete('/id', deleteIntake);
 module.exports=router;

@@ -17,6 +17,8 @@ app.use(express.json());
 
 app.use('/api/intake', intakeRoutes);
 
+app.use('/api/auth',require('./Routes/authRoutes'));
+
 app.get('/',(req,res)=>{
     res.json({status:"ONLINE", system:"GARAGE_PK_CORE_ENGINE"});
 });

@@ -45,6 +45,21 @@ res.status(200).json({success:true, data:updatedIntake})
 catch(error){
     res.status(400).json({success:false, error:error.message});
 };
+
 };
 
-module.exports={ createIntake , getIntakes, updateIntakeStatus };
+const deleteIntake=async (req,res)=>{
+try{
+    const intake=await Intake.findByIdAndDelete(req.params.id);
+    if(!intake){
+        return res.status(404).json({success:false,error:'Intake Request Not Found'});
+        
+    }
+   console.log(`🗑️  Intake Cleared: Request ID [${req.params.id}] deleted from database.`);
+    res.status(200).json({success:true,data:{}});
+} catch(err){
+    res.status(500).json({success:false,error:err.message});
+}
+}
+
+module.exports={ createIntake , getIntakes, updateIntakeStatus , deleteIntake};
