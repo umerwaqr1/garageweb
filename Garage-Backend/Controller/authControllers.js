@@ -24,3 +24,19 @@ const loginAdmin=async(req,res)=>{
         res.status(500).json({success:false,message:err.message});
     }
 }
+const registerAdmin=async(req,res)=>{
+    try{
+        const {email,password}=req.body;
+        const adminExit=await Admin.findOne({email});
+        if(adminExist){
+        return res.status(400).json({success:false, message:"Admin Already Exist"});
+        }
+        const admin=await Admin.create({email,password});
+        res.status(201).json({success:true,message:"Admin Registered Successfully"});
+
+    }
+    catch(err){
+        res.status(500).json({success:false,message:err.message});
+    }
+}
+module.exports={ loginAdmin , registerAdmin };
