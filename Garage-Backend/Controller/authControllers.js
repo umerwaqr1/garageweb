@@ -26,12 +26,12 @@ const loginAdmin=async(req,res)=>{
 }
 const registerAdmin=async(req,res)=>{
     try{
-        const {email,password}=req.body;
-        const adminExit=await Admin.findOne({email});
-        if(adminExist){
+        const {username,email,password}=req.body;
+        const adminExists=await Admin.findOne({email});
+        if(adminExists){
         return res.status(400).json({success:false, message:"Admin Already Exist"});
         }
-        const admin=await Admin.create({email,password});
+        const admin=await Admin.create({username,email,password});
         res.status(201).json({success:true,message:"Admin Registered Successfully"});
 
     }
