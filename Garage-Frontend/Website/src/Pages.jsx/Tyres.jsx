@@ -29,7 +29,7 @@ const Tyres = () => {
               { title: "Off-Road At ", sub: "Mud & Terrain ", bg: " bg-gradient-to-br from-amber-950/40 to-slate-900", icon: "fa-mountain-sun ", color: "text-amber-500 " },
               { title: "City Comfort ", sub: "Silent & Fuel Safe ", bg: " bg-gradient-to-br from-teal-950/40 to-slate-900", icon: "fa-leaf ", color: "text-teal-600 " },
             ].map((cat, i) => (
-              <motion.div key={i} whileHover={{ y: -10 }} className={`p-10 border border-white/5 rounded-[2.5rem] ${cat.bg} backdrop-blur-sm relative overflow-hidden group cursor-pointer`}>
+              <Motion.div key={i} whileHover={{ y: -10 }} className={`p-10 border border-white/5 rounded-[2.5rem] ${cat.bg} backdrop-blur-sm relative overflow-hidden group cursor-pointer`}>
                 <div className='flex justify-between items-start mb-16'>
                   <i className={`fa-solid ${cat.icon} text-3xl ${cat.color}`}></i>
                 </div>
@@ -38,7 +38,7 @@ const Tyres = () => {
                   <h3 className='text-2xl italic font-black uppercase'>{cat.title}</h3>
                 </div>
                 <div className='absolute -bottom-20 -right-20 w-40 h-40 bg-teal-500/10 blur-[50px] group-hover:bg-teal-500/30 transition-all rounded-full duration-600'></div>
-              </motion.div>
+              </Motion.div>
             ))}
           </div>
 

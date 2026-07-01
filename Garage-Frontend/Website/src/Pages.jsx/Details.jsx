@@ -1,5 +1,5 @@
 import React from 'react'
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 function Details() {
   return (
     <div className='min-h-screen bg-[#0B0F1A] text-white overflow-hidden'>
@@ -7,14 +7,14 @@ function Details() {
       {/* Split Hero section */}
 <section className='relative flex flex-col md:flex-row border-b h-screen border-white/5'>
   <div className='w-full md:w-1/2 flex flex-col justify-center p-8 md:p-20 z-10 relative'>
-  <motion.div initial={{opacity:0,y:20}} animate={{opacity:5,y:0}} transition={{duration:0.6}}>
+  <Motion.div initial={{opacity:0,y:20}} animate={{opacity:5,y:0}} transition={{duration:0.6}}>
     <span className='bg-teal-500/10 text-teal-600 px-6 py-1 rounded-full text-sm font-mono mb-6 inline-block border border-teal-500/20'>
 SYSTEM_DIAGNOSTIC_v4.0
     </span>
 <h1 className='text-6xl md:text-8xl font-black mb-6 leading-none uppercase italic'>Percision <br/><span className='text-teal-600'>Tuning</span></h1>
 <p className='text-gray-600 text-lg max-w-sm mb-10'>Unlock your vehicle's true potential with our advanced ECU remapping and performance calibration.</p>
 <button className='bg-white text-black px-10 py-4 font-black hover:bg-teal-600 hover:text-white uppercase italic transition-all rounded-sm'>Check Availability</button>
-  </motion.div>
+  </Motion.div>
 
   </div>
   <div className='w-full md:w-1/2 relative bg-slate-800'>

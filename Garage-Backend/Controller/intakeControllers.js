@@ -33,7 +33,7 @@ try{
 const { status }= req.body;
 const updatedIntake= await Intake.findByIdAndUpdate(
     req.params.id,
-    {status},
+    req.body,
     {new:true, runValidators:true}
 );
 if(!updatedIntake){
@@ -48,18 +48,25 @@ catch(error){
 
 };
 
-const deleteIntake=async (req,res)=>{
-try{
-    const intake=await Intake.findByIdAndDelete(req.params.id);
-    if(!intake){
-        return res.status(404).json({success:false,error:'Intake Request Not Found'});
-        
+const deleteIntake = async (req,res)=>{
+    try{
+        const intakeId=req.params.id;
+        if(!intakeId){
+            return res.status(400).json({success:false, message:'BAD_REQUEST // MISSING_ID'});
+        }
+        console.log(`Attempting to delete intake with ID: ${intakeId}`);
+        const deletedItem= await Intake.findByIdAndDelete(intakeId);
+        if(!deletedItem){
+            return res.status(404).json({success:false, message:'DATABASE_ERROR // LOG_NOT_FOUND'});
+        }
+        res.status(200).json({success:true, message:'VEHICLE_RECORD_DELETED_SUCCESSFULY', id:deletedItem});
+
     }
-   console.log(`🗑️  Intake Cleared: Request ID [${req.params.id}] deleted from database.`);
-    res.status(200).json({success:true,data:{}});
-} catch(err){
-    res.status(500).json({success:false,error:err.message});
-}
-}
+    catch(error){
+      console.error("CRITICAL BACKEND ERROR IN DELETE:", error.message);
+        res.status(500).json({success:false, message:'INTERNAL_SERVER_ERROR // OPERATION_ABORTED',error:error.message});
+
+    }
+};
 
 module.exports={ createIntake , getIntakes, updateIntakeStatus , deleteIntake};

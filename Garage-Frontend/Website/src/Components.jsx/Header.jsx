@@ -12,8 +12,8 @@ const Header = () => {
       <Link as={Link} to="/details" > <i className="fa-solid fa-bars text-2xl text-amber-200"></i></Link>
   <Link as={Link} to="/tyres"><i className="fa-solid fa-drum-steelpan text-2xl  text-fuchsia-300"></i></Link>
   <Link as={Link} to="/contact" ><i className="fa-regular fa-address-card text-2xl text-teal-600"></i></Link> 
-  <Link as={Link} to="/admin/login" ><i className="fa-solid fa-gear text-2xl text-gray-400"></i></Link>
-  <Link as={Link} to="/admin/dashboard" ><i className="fa-solid fa-user-gear text-2xl text-teal-600"></i></Link> 
+  {/* <Link as={Link} to="/admin/login" ><i className="fa-solid fa-gear text-2xl text-gray-400"></i></Link> */}
+  <Link as={Link} to="/dashboard" ><i className="fa-solid fa-user-gear text-2xl text-teal-600"></i></Link> 
      </div>
      </div>
     </div>

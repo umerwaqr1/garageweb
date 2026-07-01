@@ -25,10 +25,12 @@ const Login = () => {
       if (response.data.success) {
         // 🔑 Token ko browser mein save karo
         localStorage.setItem('token', response.data.token);
-        
+        setTimeout(()=>{
+navigate('/dashboard');
+      },50);
+        }
         // 🚀 Seedha secure dashboard par bhej do
-        navigate('/admin/dashboard');
-      }
+        
     } catch (err) {
       setError(err.response?.data?.message || 'LOGIN_FAILED // INVALID_CREDENTIALS');
     } finally {

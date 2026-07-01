@@ -8,5 +8,5 @@ router.post('/', createIntake);
 router.get('/', getIntakes);
 
 router.put('/:id', updateIntakeStatus);
-router.delete('/id', deleteIntake);
+router.delete('/:id', protect, deleteIntake);
 module.exports=router;

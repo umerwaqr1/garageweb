@@ -12,7 +12,7 @@ import Details from './Pages.jsx/Details';
 import Tyres from './Pages.jsx/Tyres';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AdminLogin from './Pages.jsx/AdminLogin';
-import AdminDashboard from './Pages.jsx/AdminDashboard';
+import Dashboard from './Pages.jsx/Dashboard';
 function App() {
  
 
@@ -21,14 +21,14 @@ function App() {
      <Header/>
     
      <Routes>
+<Route path="/admin/login" element={<AdminLogin/>}/>
        <Route path="/" element={<Home />} />
       <Route path="home" element={<Home />} />
       <Route path="/about" element={<About/>}/>
 <Route path="/details" element={<Details/>}/>
 <Route path="/tyres"  element={<Tyres/>}/>
 <Route path="/contact" element={<Contact/>}/>
-<Route path="/admin/login" element={<AdminLogin/>}/>
-<Route path="/admin/dashboard" element={<AdminDashboard/>}/>
+<Route path="/dashboard" element={<Dashboard/>}/>
      </Routes>
       <Footer />
     </Router>
